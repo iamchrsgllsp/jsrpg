@@ -1,0 +1,44 @@
+.planets{
+  display:grid;
+  grid-template-columns:auto auto;
+  grid-row-gap:20px;
+}
+
+.planet{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:250px;
+  width:250px;
+  border-radius: 50%;
+  color: ghostwhite;
+  font-size: 2em;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.planet:hover{
+  transition: ease-in 1000;
+  height:260px;
+  width:260px;
+  box-shadow: 3px 3px 3px 3px #333;
+}
+
+#edz{
+
+}
+
+#tower{
+
+}
+#prophecy{
+
+}
+#thehelm{
+
+}
+
+#moon{
+
+}

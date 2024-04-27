@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.cdnfonts.com/css/futurist-fixed-width" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>jsrpg</title>
+</head>
+<body onload="eATKFlag()">
+  <div id="header">
+    <div>Home</div>
+    <div>Profile</div>
+    <div>Friends</div>
+    <div>Logout</div>
+  </div>
+  <div id="gamearea">
+  <div id="char">
+    Name:{{char.name}}
+    Lvl:{{char.lvl}}
+    Equipped: Sword
+    <div id="chealth">HP: {{char.hp}}</div>
+    ATK: {{char.atk}}
+  </div>
+    <div id="game">
+      
+    </div>
+    <div id="enemy">
+      <img src="{{enemy.image}}">
+      Name:{{enemy.name}}
+      <div id="ehealth">HP: {{enemy.hp}}</div>
+      DMG: {{enemy.atk}}
+    </div>
+
+    
+  </div>
+  <div id="ui">
+    <button onclick="attack()">Attack</button>
+    <button onclick="magic()">Magic</button>
+    <div class="abilites">
+    <button onclick="abilities()">Abilities</button>
+      <div class="abilitylist" id="abilitylist">
+      {% for ability in char.abilities %}
+        <button onclick="ability()">{{ability.name}}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <button onclick="defend()">Defend</button>
+    <button onclick="orbit()">Go To Orbit</button>
+  </div>
+</body>
+  <script>
+    GO = 0
+    eATK = 1
+    eHealth = {{enemy.hp}}
+    cHealth = {{char.hp}}
+    xp = {{enemy.xp}}
+    eLoot = []
+    {% for item in enemy.loot %}
+      eLoot.push("{{item.name}}")
+    {% endfor %}
+
+function attack(){
+  damage =  {{char.atk}} - {{enemy.dfn}};
+  console.log(damage);
+  dealdamage(damage);
+}    
+
+function magic(){
+  damage =  {{char.mag}} - {{enemy.magdfn}};
+  console.log(damage);
+  dealdamage(damage);
+}
+    function abilities(){
+      x = document.getElementById("abilitylist")
+      if(x.style.display === "none"){
+        x.style.display = "block";
+      }
+      else{
+        x.style.display = "none";
+      }
+    }
+
+    function ability(){
+      console.log("ability")
+    }
+    
+    function defend(){
+      eATK = 0;
+      setTimeout(function(){ eATK = 1;eATKFlag();},3000);
+    }
+
+    function orbit(){
+      window.location.href = "/orbit";
+    }
+function dealdamage(damage){
+  eHealth = eHealth - damage
+    if (eHealth > 0 ){
+  x = document.getElementById("ehealth")
+  x.innerHTML = "HP: " + eHealth;
+}
+    else{
+      console.log("enemy defeated")
+      x = document.getElementById("ehealth")
+      x.innerHTML = "Enemy Defeated";
+      console.log(eLoot);
+      eATK = 0;
+      ranloot = eLoot[Math.floor(Math.random() * eLoot.length)];
+      updateInv(ranloot);
+      alert("Enemy Defeated\nYou gained " + xp + "!\nAnd found:" + ranloot);
+      
+      
+    }
+}
+    function eATKFlag(){
+      if(eATK == 1){
+        enemyturn();
+      }
+    }
+
+    function enemyturn(){
+      console.log("enemy turn");
+      console.log("{{char.inventory}}")
+      eDamage = {{enemy.atk}} - {{char.def}}
+      cHealth = cHealth - eDamage
+      if (cHealth > 0 ){
+        x = document.getElementById("chealth")
+        x.innerHTML = "HP: " + cHealth;
+        setTimeout(eATKFlag,{{enemy.timer}})
+      }
+          else{
+            console.log("enemy defeated")
+            x = document.getElementById("chealth")
+            x.innerHTML = "You Died";
+            alert("You Died");
+            location.href = "/orbit";
+
+          }
+      
+    }
+
+    function updateInv(loot){
+      console.log(loot);
+      fetch("/sessionprogress", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+
+          //make sure to serialize your JSON body
+          body: JSON.stringify({
+            "loot": loot,
+            "xp": xp
+          })
+        })
+      .then((response) => response.json())
+    }
+
+    
+  </script>
+</html>
+
+
+
+

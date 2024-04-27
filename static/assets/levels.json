@@ -1,0 +1,32 @@
+{
+  "warlock": {
+    "1": { "atk": 10, "def": 5, "spd": 5, "abilities": [], "xp": 0 },
+    "2": { "atk": 11, "def": 6, "spd": 6, "abilities": [], "xp": 100 },
+    "3": { "atk": 12, "def": 8, "spd": 7, "abilities": [], "xp": 200 },
+    "4": { "atk": 15, "def": 8, "spd": 7, "abilities": [], "xp": 300 },
+    "5": { "atk": 17, "def": 8, "spd": 7, "abilities": [], "xp": 500 },
+    "6": { "atk": 19, "def": 8, "spd": 7, "abilities": [], "xp": 800 },
+    "7": { "atk": 23, "def": 8, "spd": 7, "abilities": [], "xp": 1100 },
+    "8": { "atk": 25, "def": 8, "spd": 7, "abilities": [], "xp": 1300 }
+  },
+  "hunter": {
+    "1": { "atk": 10, "def": 5, "spd": 5, "abilities": [], "xp": 0 },
+    "2": { "atk": 11, "def": 6, "spd": 6, "abilities": [], "xp": 100 },
+    "3": { "atk": 12, "def": 8, "spd": 7, "abilities": [], "xp": 200 },
+    "4": { "atk": 15, "def": 8, "spd": 7, "abilities": [], "xp": 300 },
+    "5": { "atk": 17, "def": 8, "spd": 7, "abilities": [], "xp": 500 },
+    "6": { "atk": 19, "def": 8, "spd": 7, "abilities": [], "xp": 800 },
+    "7": { "atk": 23, "def": 8, "spd": 7, "abilities": [], "xp": 1100 },
+    "8": { "atk": 25, "def": 8, "spd": 7, "abilities": [], "xp": 1300 }
+  },
+  "titan": {
+    "1": { "atk": 10, "def": 5, "spd": 5, "abilities": [], "xp": 0 },
+    "2": { "atk": 11, "def": 6, "spd": 6, "abilities": [], "xp": 100 },
+    "3": { "atk": 12, "def": 8, "spd": 7, "abilities": [], "xp": 200 },
+    "4": { "atk": 15, "def": 8, "spd": 7, "abilities": [], "xp": 300 },
+    "5": { "atk": 17, "def": 8, "spd": 7, "abilities": [], "xp": 500 },
+    "6": { "atk": 19, "def": 8, "spd": 7, "abilities": [], "xp": 800 },
+    "7": { "atk": 23, "def": 8, "spd": 7, "abilities": [], "xp": 1100 },
+    "8": { "atk": 25, "def": 8, "spd": 7, "abilities": [], "xp": 1300 }
+  }
+}

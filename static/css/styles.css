@@ -1,0 +1,23 @@
+
+#header{
+  display:grid;
+  grid-template-columns:auto auto auto auto;
+  background-color: #333;
+}
+
+#header div{
+  background-color:green;
+  color:ghostwhite;
+}
+
+#gamearea{
+  display:grid;
+  grid-template-columns:15% auto 25%;
+  background-color: ghostwhite;
+}
+
+#enemy img{width:100%}
+
+.abilitylist{
+  display:none;
+}

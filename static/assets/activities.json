@@ -1,0 +1,10 @@
+{
+  "1":{"name":"Patrol","difficulty":"easy","description":"Patrol the area"},
+  "2":{"name":"Public Event","difficulty":"easy","description":"Small scale skirmish"},
+  "3":{"name":"Vendor","difficulty":"easy","description":"What are ye buying?"},
+  "4":{},
+  "5":{},
+  "6":{},
+  "7":{"name":"social", "description":"Socialize with other players", "type":"activity", "value":1},
+  "8":{"name":"Prophecy","image":"https://cdn.vox-cdn.com/thumbor/Y1VlyHuXJXF3HLB1x2QtP_ZE5IQ=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/23604235/wq_5_fig_dungeonkey_full.jpg","description":"A dangerous journey, to see an audience with The Nine"}
+}

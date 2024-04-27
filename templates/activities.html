@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='javascript/orbit.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/activities.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Activities</title>
+</head>
+<body>
+  <div class="planets">
+    {% for a in activities %}
+    <button class ="planet" style="background-image:url('{{a.image}}');">{{a.name}}</button>
+    <h1>{{a.description}}</h1>
+    {% endfor %}
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='javascript/orbit.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/orbit.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Orbit</title>
+</head>
+<body>
+  <div class="planets">
+    {% for planet in planets %}
+    <button class ="planet" id="{{planet.id}}" style="background-image:url('{{planet.image}}');" onclick="location.href ='/planet/{{planet.id}}'">{{planet.name}}</button>
+    {% endfor %}
+  </div>
+</body>
+</html>

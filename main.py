@@ -78,8 +78,11 @@ def index(planet, activity):
     selenemy = mobslist[randint(0, len(enemylist) - 1)]
   else:
     selenemy = enemylist[randint(0, len(enemylist) - 1)]
-  return render_template("home.html", char=character, enemy=selenemy,planet=planet,activity=activity)
+  return render_template("home.html",
+                         char=character,
+                         enemy=selenemy,
+                         planet=planet,
+                         activity=activity)
 
 
-if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=80)
+#app.run(host='0.0.0.0', port=80)

@@ -11,6 +11,7 @@
     <title>Orbit</title>
 </head>
 <body>
+  <p>Progress: {{prog}}</p>
   <div class="planets">
     {% for planet in planets %}
     <button class ="planet" id="{{planet.id}}" style="background-image:url('{{planet.image}}');" onclick="location.href ='/planet/{{planet.id}}'">{{planet.name}}</button>

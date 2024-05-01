@@ -2,15 +2,19 @@ from flask import Flask, render_template, request
 import json
 from random import randint
 from enemies import enemylist
+from mobs import mobslist
 from character import get_char
 import os
 import stats
 
 app = Flask(__name__, static_folder="static")
-userxp = 0
+userxp = 100
+prog = 0
+
 
 @app.route("/sessionprogress", methods=["GET", "POST"])
 def sessionprogress():
+  global prog
   global userxp
   if request.method == "POST":
     if request.json is None:
@@ -22,6 +26,8 @@ def sessionprogress():
       print(loot)
       print(xp)
       userxp = userxp + xp
+      prog += 1
+      print(prog)
       print(userxp)
       return request.data
   else:
@@ -33,7 +39,7 @@ def orbit():
   with open("/home/runner/jsrpg/static/assets/planets.json") as file:
     planets = json.load(file)
     planets = planets["planets"]
-  return render_template("orbit.html", planets=planets)
+  return render_template("orbit.html", planets=planets, prog=prog)
 
 
 @app.route("/planet/<planet>")
@@ -52,16 +58,27 @@ def dest(planet):
         act = json.load(file)
         for a in destination.get("activities", []):
           activities.append(act[str(a)])
-      return render_template("activities.html", activities=activities)
+      return render_template("activities.html",
+                             activities=activities,
+                             planet=planet)
     else:
       return "Planet not found"  # Handle the case when the planet is not found
 
 
-@app.route('/game')
-def index():
-  character = stats.find_lvl("hunter", 860)
-  selenemy = enemylist[randint(0, len(enemylist) - 1)]
-  return render_template("home.html", char=character, enemy=selenemy)
+@app.route('/game/<planet>/<activity>')
+def index(planet, activity):
+  global prog
+  print(planet)
+  character = stats.find_lvl("warlock", userxp)
+  print(character)
+  if prog < 10:
+    selenemy = mobslist[randint(0, len(enemylist) - 1)]
+  elif activity == "patrol":
+    print("patrol")
+    selenemy = mobslist[randint(0, len(enemylist) - 1)]
+  else:
+    selenemy = enemylist[randint(0, len(enemylist) - 1)]
+  return render_template("home.html", char=character, enemy=selenemy,planet=planet,activity=activity)
 
 
 if __name__ == '__main__':

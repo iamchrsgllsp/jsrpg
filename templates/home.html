@@ -110,6 +110,7 @@ function dealdamage(damage){
       ranloot = eLoot[Math.floor(Math.random() * eLoot.length)];
       updateInv(ranloot);
       alert("Enemy Defeated\nYou gained " + xp + "!\nAnd found:" + ranloot);
+      location.href = "/game/{{planet}}/{{activity}}";
       
       
     }

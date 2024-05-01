@@ -1,5 +1,5 @@
 {
-  "1":{"name":"Patrol","difficulty":"easy","description":"Patrol the area"},
+  "1":{"name":"Patrol","difficulty":"easy","description":"Patrol the area","link":"/game/patrol"},
   "2":{"name":"Public Event","difficulty":"easy","description":"Small scale skirmish"},
   "3":{"name":"Vendor","difficulty":"easy","description":"What are ye buying?"},
   "4":{},

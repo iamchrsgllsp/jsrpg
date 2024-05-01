@@ -15,6 +15,7 @@
     {% for a in activities %}
     <button class ="planet" style="background-image:url('{{a.image}}');">{{a.name}}</button>
     <h1>{{a.description}}</h1>
+    <a href="/game/{{planet}}/{{a.name}}">Play</a>
     {% endfor %}
   </div>
   
